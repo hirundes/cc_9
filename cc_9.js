@@ -70,7 +70,7 @@ class Company {     //CREATING COMPANY CLASS
         }, 0);
     }
     
-    promoteToManager(employee, teamSize) {
+    promoteToManager(employee, teamSize) {  //TASK 5: ADD METHOD promoteToManager(employee, teamSize) WHICH CONVERTS AN EMPLOYEE INTO A MANAGER
         let index = this.employees.indexOf(employee);
         if (index !== -1) {
             this.employees [index] = new Manager (employee.name, employee.id, employee.department, employee.salary, teamSize) 
@@ -94,7 +94,8 @@ console.log(company.calculateTotalPayroll());
 
 
 //Task 5 - Implemented Promotion System
-company.promoteToManager(emp1, 3);
+console.log("---Task 5---")     //LOGGED "Task 5" AND promoteToManager AND listEmployees
+company.promoteToManager(emp1, 3);  
 company.listEmployees();
 // Expected output: "Manager: Alice Johnson, ID: 101, Department: Sales, Salary: $5000, Team Size: 3"
 
