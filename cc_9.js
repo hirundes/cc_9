@@ -4,22 +4,23 @@ class Employee {    //CREATE CLASS Employee WITH PROPERTIES NAME, ID, DEPARTMENT
         this.name = name;
         this.id = id;
         this.department = department;
-        this.salary = salary;
+        this.salary = salary; 
     };
 
 getDetails() {      //ADD METHOD getDetails() THAT RETURNS FORMATTED STRING OF EMPLOYEE DETAILS
-    console.log(`Employee: ${this.name}, ID: ${this.id}, Department: ${this.department}, Salary: $${this.salary}`);
+    return (`Employee: ${this.name}, ID: ${this.id}, Department: ${this.department}, Salary: $${this.salary}`);
 };
 
 calculateAnnualSalary() {       //ADD METHOD calculateAnnualSalary THAT RETURNS EMPLOYEE'S ANNNUAL SALARY
-    console.log(`$${this.salary * 12}`) 
+    return this.salary * 12
 };
 };
 console.log ("---Task 1---")    //INSTANTIATE Employee as emp1, LOGGED "Task 1", AND emp1.getDetails();, AND emp1.calculateAnnualSalary(); 
 const emp1 = new Employee("Alice Johnson", 101, "Sales", 5000);
-emp1.getDetails();  
+console.log(emp1.getDetails()); 
 // Expected output: "Employee: Alice Johnson, ID: 101, Department: Sales, Salary: $5000"
-emp1.calculateAnnualSalary(); 
+
+console.log(emp1.calculateAnnualSalary()); 
 // Expected output: 60000
 
 
@@ -31,19 +32,20 @@ class Manager extends Employee {    //MANAGER CLASS INHERIT FROM EMPLOYEE
     };
 
 getDetails() {      //OVERRIDE getDetails() TO INCLUDE TEAM SIZE
-    console.log(`Employee: ${this.name}, ID: ${this.id}, Department: ${this.department}, Salary: $${this.salary}, Team Size: ${this.teamSize}`)
+    return(`Manager: ${this.name}, ID: ${this.id}, Department: ${this.department}, Salary: $${this.salary}, Team Size: ${this.teamSize}`)
 };
 
 calculateBonus() {      //CALCULATE BONUS BY MULTIPLYING ANNUAL SALARY BY 10 PERCENT
-    console.log(`$${((this.salary * 12) * 0.10)}`)
+    return (this.salary * 12) * 0.10
 };
 };
 
 console.log("---Task 2---")     //INSTANTIATE MANAGER AS mgr1 AND LOGGED "Task 2" AND LOGGED mgr1.getDetails AND mgr1.calculateBonus.
 const mgr1 = new Manager("John Smith", 201, "IT", 8000, 5);
-mgr1.getDetails();
+console.log(mgr1.getDetails());
 // Expected output: "Manager: John Smith, ID: 201, Department: IT, Salary: $8000, Team Size: 5"
-mgr1.calculateBonus(); 
+
+console.log(mgr1.calculateBonus()); 
 // Expected output: 9600
 
 
@@ -60,9 +62,21 @@ class Company {     //CREATING COMPANY CLASS
 
     listEmployees() {           //ADD METHOD WHICH LOGS LIST OF EMPLOYEES' DETAILS
         this.employees.forEach(employee => console.log(employee));
-    };
-};
-
+    };  
+    
+    calculateTotalPayroll() {   //TASK 4: ADD METHOD CalculateTotalPayroll() THAT RETURNS SUM OF ALL EMPLOYEE SALARIES INC MANAGERS
+        return this.employees.reduce((total, emp) => {
+            return total + emp.calculateAnnualSalary();
+        }, 0);
+    }
+    
+    promoteToManager(employee, teamSize) {
+        let index = this.employees.indexOf(employee);
+        if (index !== -1) {
+            this.employees [index] = new Manager (employee.name, employee.id, employee.department, employee.salary, teamSize) 
+        }
+    }
+}
 console.log("---Task 3---")           //LOGGED "Task 3", DECLARED COMPANY, AND LOGGED addEmployee, and listEmployees
 const company = new Company("TechCorp");    
 company.addEmployee(emp1);
@@ -71,4 +85,16 @@ company.listEmployees();
 // Expected output:
 // "Employee: Alice Johnson, ID: 101, Department: Sales, Salary: $5000"
 // "Manager: John Smith, ID: 201, Department: IT, Salary: $8000, Team Size: 5"
+
+
+//Task 4 - Implemented Payroll System
+console.log("---Task 4---")     //LOGGED "Task 4" AND company.calculateTotalPayroll
+console.log(company.calculateTotalPayroll()); 
+// Expected output: 156000 (assuming emp1 and mgr1 salaries)
+
+
+//Task 5 - Implemented Promotion System
+company.promoteToManager(emp1, 3);
+company.listEmployees();
+// Expected output: "Manager: Alice Johnson, ID: 101, Department: Sales, Salary: $5000, Team Size: 3"
 
