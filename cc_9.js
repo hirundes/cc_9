@@ -47,3 +47,28 @@ mgr1.calculateBonus();
 // Expected output: 9600
 
 
+//Task 3 - Created Company Class
+class Company {     //CREATING COMPANY CLASS
+    constructor(name) {
+        this.name = name;       //PROPERTY NAME FOR COMPANY NAME
+        this.employees = [];    //ARRAY EMPLOYEES TO STORE EMPLOYEE OBJECTS
+    };
+
+    addEmployee(employee) {     //ADD METHOD WHICH ADDS AN EMPLOYEE TO THE ARRAY
+        this.employees.push(employee);
+    };
+
+    listEmployees() {           //ADD METHOD WHICH LOGS LIST OF EMPLOYEES' DETAILS
+        this.employees.forEach(employee => console.log(employee));
+    };
+};
+
+console.log("---Task 3---")           //LOGGED "Task 3", DECLARED COMPANY, AND LOGGED addEmployee, and listEmployees
+const company = new Company("TechCorp");    
+company.addEmployee(emp1);
+company.addEmployee(mgr1);
+company.listEmployees();
+// Expected output:
+// "Employee: Alice Johnson, ID: 101, Department: Sales, Salary: $5000"
+// "Manager: John Smith, ID: 201, Department: IT, Salary: $8000, Team Size: 5"
+
