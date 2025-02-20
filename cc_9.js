@@ -95,7 +95,7 @@ company.listEmployees();
 //Task 4 - Implemented Payroll System
 console.log("---Task 4---")     //LOGGED "Task 4" AND company.calculateTotalPayroll
 console.log(company.calculateTotalPayroll()); 
-// Expected output: 156000 (assuming emp1 and mgr1 salaries)
+// Expected output: 165600 (assuming emp1 and mgr1 salaries)
 
 
 //Task 5 - Implemented Promotion System
