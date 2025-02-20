@@ -28,7 +28,7 @@ console.log(emp1.calculateAnnualSalary());
 class Manager extends Employee {    //MANAGER CLASS INHERIT FROM EMPLOYEE
     constructor(name, id, department, salary, teamSize) {
         super(name, id, department, salary)
-        this.teamsize = teamSize 
+        this.teamSize = teamSize 
     };
     
     calculateAnnualSalary() {       //TASK 4: MODIFYING calculateAnnyalSalary() OVERRIDE
