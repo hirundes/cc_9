@@ -26,10 +26,10 @@ console.log(emp1.calculateAnnualSalary());
 
 //Task 2 - Created Manager Class with Inheritance
 class Manager extends Employee {    //MANAGER CLASS INHERIT FROM EMPLOYEE
-    constructor(name, id, department, salary, teamSize) {   
-    super(name, id, department, salary)
-    this.teamSize = teamSize        //ADDING NEW PROPERTY teamSize
-    };
+    calculateAnnualSalary() {       //TASK 4: MODIFYING calculateAnnyalSalary() OVERRIDE
+        return (this.salary * 12) +  
+    this.calculateBonus(); //ADDS BONUS
+    }
 
 getDetails() {      //OVERRIDE getDetails() TO INCLUDE TEAM SIZE
     return(`Manager: ${this.name}, ID: ${this.id}, Department: ${this.department}, Salary: $${this.salary}, Team Size: ${this.teamSize}`)
@@ -73,7 +73,7 @@ class Company {     //CREATING COMPANY CLASS
     promoteToManager(employee, teamSize) {  //TASK 5: ADD METHOD promoteToManager(employee, teamSize) WHICH CONVERTS AN EMPLOYEE INTO A MANAGER
         let index = this.employees.indexOf(employee);
         if (index !== -1) {
-            this.employees [index] = new Manager (employee.name, employee.id, employee.department, employee.salary, teamSize) 
+            this.employees [index] = new Manager (employee.name, employee.id, employee.department, employee.salary, teamSize); 
         }
     }
 }
